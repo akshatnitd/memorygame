@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32x32.png">
+    <title>Memory Game</title>
+</head>
+<body>
+    <div class="content">
+        <!-- Header -->
+        <div id="header">
+            <div id="nav">
+                <button class="btn btn-success" onclick="reset()">New Game</button>
+            </div>
+            <div id="date"></div>
+            <div id="player"><input id="name-input" type="text" placeholder=" Enter your name" onchange="playerName()"></div>
+        </div>
+        <!-- /Header -->
+
+        <div id="game-content">
+
+            <!-- Info screen -->
+            <div id="info-msg">
+                <p>Welcome to my memory card game.</p>
+                <p><u>Game info:</u></p>
+                <p>You need to find all 15 pairs to complete the game. If you wish you can enter your name at the top right corner.</p>
+                <p>Enjoy it!</p>
+                <p>All the pictures and logos are from <a href="https://www.carlogos.org/car-brands/" target="_blank">Car Brand Logos</a> and used for educational purposes only!</p>
+                <button class="btn btn-success" onclick="windowClose()">Let's play!</button>
+            </div>
+            <!-- /Info screen -->
+
+            <!-- Finish screen : display hidden by default -->
+            <div id="done-msg">
+                <p id="win-msg"></p>
+                <p>You found all pairs!</p>
+                <p>With <span id="clicks"></span>.</p>
+                <button class="btn btn-success" onclick="windowClose()">Congratulations!</button>
+            </div>
+            <!-- /Finish screen -->
+
+            <!-- Memory card game content-->
+            <div class="card" data-carddata="Alfa-Romeo-logo">
+                <img class="front-face" src="assets/images/Alfa-Romeo-logo.jpg" alt="card Alfa-Romeo-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Audi-logo">
+                <img class="front-face" src="assets/images/Audi-logo.jpg" alt="card Audi-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="bmw-logo">
+                <img class="front-face" src="assets/images/bmw-logo.png" alt="card bmw-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Chevrolet-logo">
+                <img class="front-face" src="assets/images/Chevrolet-logo.jpg" alt="card Chevrolet-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="ferrari-logo">
+                <img class="front-face" src="assets/images/ferrari-logo.png" alt="card ferrari-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Fiat-logo">
+                <img class="front-face" src="assets/images/Fiat-logo.jpg" alt="card Fiat-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="ford-logo">
+                <img class="front-face" src="assets/images/ford-logo.png" alt="card ford-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="honda-logo">
+                <img class="front-face" src="assets/images/honda-logo.png" alt="card honda-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="lamborghini-logo">
+                <img class="front-face" src="assets/images/lamborghini-logo.png" alt="card lamborghini-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Mercedes-Benz-logo">
+                <img class="front-face" src="assets/images/Mercedes-Benz-logo.jpg" alt="card Mercedes-Benz-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="porsche-logo">
+                <img class="front-face" src="assets/images/porsche-logo.png" alt="card porsche-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="tesla-logo">
+                <img class="front-face" src="assets/images/tesla-logo.png" alt="card tesla-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="toyota-logo">
+                <img class="front-face" src="assets/images/toyota-logo.png" alt="card toyota-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Volkswagen-logo">
+                <img class="front-face" src="assets/images/Volkswagen-logo.jpg" alt="card Volkswagen-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Alfa-Romeo-logo">
+                <img class="front-face" src="assets/images/Alfa-Romeo-logo.jpg" alt="card Alfa-Romeo-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Audi-logo">
+                <img class="front-face" src="assets/images/Audi-logo.jpg" alt="card Audi-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="bmw-logo">
+                <img class="front-face" src="assets/images/bmw-logo.png" alt="card bmw-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Chevrolet-logo">
+                <img class="front-face" src="assets/images/Chevrolet-logo.jpg" alt="card Chevrolet-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="ferrari-logo">
+                <img class="front-face" src="assets/images/ferrari-logo.png" alt="card ferrari-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Fiat-logo">
+                <img class="front-face" src="assets/images/Fiat-logo.jpg" alt="card Fiat-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="ford-logo">
+                <img class="front-face" src="assets/images/ford-logo.png" alt="card ford-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="honda-logo">
+                <img class="front-face" src="assets/images/honda-logo.png" alt="card honda-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="lamborghini-logo">
+                <img class="front-face" src="assets/images/lamborghini-logo.png" alt="card lamborghini-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Mercedes-Benz-logo">
+                <img class="front-face" src="assets/images/Mercedes-Benz-logo.jpg" alt="card Mercedes-Benz-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="porsche-logo">
+                <img class="front-face" src="assets/images/porsche-logo.png" alt="card porsche-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="tesla-logo">
+                <img class="front-face" src="assets/images/tesla-logo.png" alt="card tesla-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="toyota-logo">
+                <img class="front-face" src="assets/images/toyota-logo.png" alt="card toyota-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Volkswagen-logo">
+                <img class="front-face" src="assets/images/Volkswagen-logo.jpg" alt="card Volkswagen-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Aston-Martin-logo">
+                <img class="front-face" src="assets/images/Aston-Martin-logo.jpg" alt="card Aston-Martin-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <div class="card" data-carddata="Aston-Martin-logo">
+                <img class="front-face" src="assets/images/Aston-Martin-logo.jpg" alt="card Aston-Martin-logo">
+                <img class="back-face" src="assets/images/card_back.png" alt="card backside">
+            </div>
+            <!-- /Memory card game content-->
+        </div>
+
+        <!-- Footer-->
+        <div id="footer">
+            <p>&copy; <span id="year"></span> by Oisín McHugh. For educational purposes only. 
+                <span class="social">
+                    <a href="https://github.com/McHugh1894" target="_blank"><i class="fa fa-github"></i></a>
+                    <a href="http://www.facebook.com" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <a href="http://www.twitter.com" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="http://www.instagram.com" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="http://www.youtube.com" target="_blank"><i class="fa fa-youtube"></i></a>
+                </span></p>
+        </div>
+        <!-- /Footer-->
+    </div>
+    <script src="assets/js/index.js"></script>
+</body>
+</html>
